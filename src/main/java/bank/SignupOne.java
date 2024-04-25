@@ -1,10 +1,14 @@
 package bank;
-import javax.swing.*;
-import java.awt.*;
-import java.util.Random;
+
 import com.toedter.calendar.JDateChooser;
 
-public class SignupOne extends JFrame{
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+public class SignupOne extends JFrame implements ActionListener {
 
     JLabel name ,fathername, dateofbirth, gender,email,maritalstatus,address,city,pincode,state;
     JTextField name1 ,fathername1,email1,address1,city1,pincode1,state1;
@@ -15,7 +19,7 @@ public class SignupOne extends JFrame{
     Random ran = new Random();
     long first = (ran.nextLong() % 9000L) + 1000L;
     String random = "" + Math.abs(first);
-    
+
     SignupOne(){
         setLayout(null);
 
@@ -31,7 +35,7 @@ public class SignupOne extends JFrame{
         formno.setBounds(140, 29, 600, 40);
         add(formno);
 
-        JLabel personalDetails = new JLabel("Page 1 : Personal Details");
+        JLabel personalDetails = new JLabel("Page 01 : Personal Details");
         personalDetails.setFont(new Font("Raleway",Font.BOLD,20));
         personalDetails.setBounds(300, 89, 400, 40);
         personalDetails.setForeground(Color.GRAY);
@@ -171,6 +175,7 @@ public class SignupOne extends JFrame{
         next.setBounds(550,670,150,35);
         next.setBackground(Color.BLACK);
         next.setForeground(Color.WHITE);
+        next.addActionListener(this);
         add(next);
 
         getContentPane().setBackground(Color.WHITE);
@@ -178,6 +183,61 @@ public class SignupOne extends JFrame{
         setSize(850, 800);
         setLocation(350, 10);
         setVisible(true);
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        String formno = " " + random;
+        String name = name1.getText();
+        String fathername = fathername1.getText();
+        String email = email1.getText();
+        String address = address1.getText();
+        String city = city1.getText();
+        String pincode = pincode1.getText();
+        String state = state1.getText();
+        String dob = ((JTextField)dateofbirth1.getDateEditor().getUiComponent()).getText();
+
+        String gender = null;
+        if(male.isSelected()){
+            gender = "Male";
+        } else if (female.isSelected()) {
+            gender = "Female";
+        }else {
+            gender = "Other";
+        }
+
+        String maritial = null;
+        if(yes.isSelected()){
+            maritial = "Married";
+        }else if(no.isSelected()){
+            maritial = "Unmarried";
+        }
+        try{
+            if(name.isEmpty() ){
+                JOptionPane.showMessageDialog(null, "Please enter your name");
+            } else if (fathername.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter your fathername");
+            } else if (email.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter your email");
+            } else if (address.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter your address");
+            } else if (city.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter your city");
+            } else if (pincode.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter your pincode");
+            } else if (state.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter your state");
+            } else if (dob.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter your dob");
+            } else {
+                Connect con = new Connect();
+                String query = "insert into signup values('"+formno+"','"+name+"','"+fathername+"','"+email+"','"+address+"','"+city+"','"+pincode+"','"+state+"','"+dob+"','"+gender+"','"+maritial+"')";
+                con.s.executeUpdate(query);
+            }
+
+        }catch (Exception es){
+            System.out.println(es.getMessage());
+        }
 
     }
 
