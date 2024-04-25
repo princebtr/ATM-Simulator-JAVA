@@ -2,10 +2,14 @@ package bank;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
+import com.toedter.calendar.JDateChooser;
 
 public class SignupOne extends JFrame{
 
-    JLabel name ,fathername, dateofbirth, gender,email,maritalstatus,address,city,pincode,state,date,month,year;
+    JLabel name ,fathername, dateofbirth, gender,email,maritalstatus,address,city,pincode,state;
+    JTextField name1 ,fathername1,email1,address1,city1,pincode1,state1;
+    JDateChooser dateofbirth1;
+    JRadioButton male,female, other, yes, no;
 
     Random ran = new Random();
     long first = (ran.nextLong() % 9000L) + 1000L;
@@ -18,7 +22,7 @@ public class SignupOne extends JFrame{
         Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel label = new JLabel(i3);
-        label.setBounds(20, 1, 100, 100);
+        label.setBounds(20, 0, 100, 100);
         add(label);
 
         JLabel formno = new JLabel("Application Form Number : " + random);
@@ -27,74 +31,124 @@ public class SignupOne extends JFrame{
         add(formno);
 
         JLabel personalDetails = new JLabel("Page 1 : Personal Details");
-        personalDetails.setFont(new Font("Raleway",Font.BOLD,30));
+        personalDetails.setFont(new Font("Raleway",Font.BOLD,28));
         personalDetails.setBounds(280, 89, 400, 40);
         add(personalDetails);
 
         name = new JLabel("Name : ");
         name.setFont(new Font("Raleway",Font.BOLD,20));
-        name.setBounds(100, 149, 200, 30);
+        name.setBounds(100, 140, 200, 30);
         add(name);
+
+        name1 = new JTextField();
+        name1.setFont(new Font("Raleway",Font.BOLD,20));
+        name1.setBounds(300, 140, 400, 30);
+        add(name1);
 
         fathername = new JLabel("Father's Name : ");
         fathername.setFont(new Font("Raleway",Font.BOLD,20));
-        fathername.setBounds(100, 199, 200, 30);
+        fathername.setBounds(100, 190, 200, 30);
         add(fathername);
+
+        fathername1 = new JTextField();
+        fathername1.setFont(new Font("Raleway",Font.BOLD,20));
+        fathername1.setBounds(300, 190, 400, 30);
+        add(fathername1);
 
         dateofbirth = new JLabel("Date of Birth : ");
         dateofbirth.setFont(new Font("Raleway",Font.BOLD,20));
-        dateofbirth.setBounds(100, 249, 200, 30);
+        dateofbirth.setBounds(100, 240, 200, 30);
         add(dateofbirth);
+
+        dateofbirth1 = new JDateChooser();
+        dateofbirth1.setFont(new Font("Raleway",Font.BOLD,20));
+        dateofbirth1.setBounds(300, 240, 400, 30);
+        add(dateofbirth1);
 
         gender = new JLabel("Gender : ");
         gender.setFont(new Font("Raleway",Font.BOLD,20));
-        gender.setBounds(100, 299, 200, 30);
+        gender.setBounds(100, 290, 200, 30);
         add(gender);
+
+        male = new JRadioButton("Male");
+        male.setBackground(Color.WHITE);
+        male.setFont(new Font("Raleway",Font.BOLD,20));
+        male.setBounds(300, 290, 100, 30);
+        add(male);
+
+        female = new JRadioButton("Female");
+        female.setBackground(Color.WHITE);
+        female.setFont(new Font("Raleway",Font.BOLD,20));
+        female.setBounds(450, 290, 100, 30);
+        add(female);
+
+        other = new JRadioButton("Other");
+        other.setBackground(Color.WHITE);
+        other.setFont(new Font("Raleway",Font.BOLD,20));
+        other.setBounds(600, 290, 100, 30);
+        add(other);
+
+        ButtonGroup gendergr = new ButtonGroup();
+        gendergr.add(male);
+        gendergr.add(female);
+        gendergr.add(other);
 
         email = new JLabel("Email Address : ");
         email.setFont(new Font("Raleway",Font.BOLD,20));
-        email.setBounds(100, 349, 200, 30);
+        email.setBounds(100, 340, 200, 30);
         add(email);
+
+        email1 = new JTextField();
+        email1.setFont(new Font("Raleway",Font.BOLD,20));
+        email1.setBounds(300, 340, 400, 30);
+        add(email1);
 
         maritalstatus = new JLabel("Marital Status : ");
         maritalstatus.setFont(new Font("Raleway",Font.BOLD,20));
-        maritalstatus.setBounds(100, 399, 200, 30);
+        maritalstatus.setBounds(100, 390, 200, 30);
         add(maritalstatus);
+
+
 
         address = new JLabel("Address : ");
         address.setFont(new Font("Raleway",Font.BOLD,20));
-        address.setBounds(100, 449, 200, 30);
+        address.setBounds(100, 440, 200, 30);
         add(address);
+
+        address1 = new JTextField();
+        address1.setFont(new Font("Raleway",Font.BOLD,20));
+        address1.setBounds(300, 440, 400, 30);
+        add(address1);
 
         city = new JLabel("City : ");
         city.setFont(new Font("Raleway",Font.BOLD,20));
-        city.setBounds(100, 499, 200, 30);
+        city.setBounds(100, 490, 200, 30);
         add(city);
+
+        city1 = new JTextField();
+        city1.setFont(new Font("Raleway",Font.BOLD,20));
+        city1.setBounds(300, 490, 400, 30);
+        add(city1);
 
         pincode = new JLabel("Pin Code : ");
         pincode.setFont(new Font("Raleway",Font.BOLD,20));
-        pincode.setBounds(100, 549, 200, 30);
+        pincode.setBounds(100, 540, 200, 30);
         add(pincode);
+
+        pincode1 = new JTextField();
+        pincode1.setFont(new Font("Raleway",Font.BOLD,20));
+        pincode1.setBounds(300, 540, 400, 30);
+        add(pincode1);
 
         state = new JLabel("State : ");
         state.setFont(new Font("Raleway",Font.BOLD,20));
-        state.setBounds(100, 599, 200, 30);
+        state.setBounds(100, 590, 200, 30);
         add(state);
 
-        date = new JLabel("Date : ");
-        date.setFont(new Font("Raleway",Font.BOLD,20));
-        date.setBounds(100, 649, 200, 30);
-        add(date);
-
-        month = new JLabel("Month : ");
-        month.setFont(new Font("Raleway",Font.BOLD,20));
-        month.setBounds(100, 699, 200, 30);
-        add(month);
-
-        year = new JLabel("Year : ");
-        year.setFont(new Font("Raleway",Font.BOLD,20));
-        year.setBounds(100, 749, 200, 30);
-        add(year);
+        state1 = new JTextField();
+        state1.setFont(new Font("Raleway",Font.BOLD,20));
+        state1.setBounds(300, 590, 400, 30);
+        add(state1);
 
         getContentPane().setBackground(Color.WHITE);
 
