@@ -233,6 +233,9 @@ public class SignupOne extends JFrame implements ActionListener {
                 Connect con = new Connect();
                 String query = "insert into signup values('"+formno+"','"+name+"','"+fathername+"','"+email+"','"+address+"','"+city+"','"+pincode+"','"+state+"','"+dob+"','"+gender+"','"+maritial+"')";
                 con.s.executeUpdate(query);
+
+                setVisible(false);
+                new SignupTwo().setVisible(true);
             }
 
         }catch (Exception es){

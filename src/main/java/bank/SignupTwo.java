@@ -174,7 +174,7 @@ public class SignupTwo extends JFrame implements ActionListener {
         previous.setBounds(550,640,150,35);
         previous.setBackground(Color.BLACK);
         previous.setForeground(Color.WHITE);
-        next.addActionListener(this);
+        previous.addActionListener(this);
         add(previous);
 
         dummy = new JLabel("Seniour Citizen : ");
@@ -191,7 +191,13 @@ public class SignupTwo extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent ae){
+    public void actionPerformed(ActionEvent e){
+
+        if (e.getSource() == previous){
+            setVisible(false);
+            new SignupOne().setVisible(true);
+            return;
+        }
         String formno = "" + SignupOne.random;
         String religion = (String)religion1.getSelectedItem();
         String category = (String)category1.getSelectedItem();
@@ -225,19 +231,15 @@ public class SignupTwo extends JFrame implements ActionListener {
 
             } else{
                 Connect c1 = new Connect();
-                String q1 = "insert into signup2 values('"+formno+"','"+religion+"','"+category+"','"+income+"','"+education+"','"+occupation+"','"+pan+"','"+aadhar+"','"+scitizen+"','"+eaccount+"')";
-                c1.s.executeUpdate(q1);
-
-//                new Signup3(formno).setVisible(true);
-//                setVisible(false);
+                String query = "insert into signup2 values('"+formno+"','"+religion+"','"+category+"','"+income+"','"+education+"','"+occupation+"','"+pan+"','"+aadhar+"','"+scitizen+"','"+eaccount+"')";
+                c1.s.executeUpdate(query);
             }
 
 
 
-        }catch(Exception ex){
-            ex.printStackTrace();
+        }catch(Exception ea){
+            System.out.println(ea.getMessage());
         }
-
 
     }
 
