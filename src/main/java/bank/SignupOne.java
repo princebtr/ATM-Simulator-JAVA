@@ -16,9 +16,9 @@ public class SignupOne extends JFrame implements ActionListener {
     JRadioButton male,female, other, yes, no;
     JButton next;
 
-    Random ran = new Random();
-    long first = (ran.nextLong() % 9000L) + 1000L;
-    String random = "" + Math.abs(first);
+    static Random ran = new Random();
+    static long first = (ran.nextLong() % 9000L) + 1000L;
+    public static String random = "" + Math.abs(first);
 
     SignupOne(){
         setLayout(null);
@@ -187,7 +187,7 @@ public class SignupOne extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        String formno = " " + random;
+        String formno = "" + random;
         String name = name1.getText();
         String fathername = fathername1.getText();
         String email = email1.getText();
