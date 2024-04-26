@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class SignupTwo extends JFrame implements ActionListener {
 
-    JLabel religion , category , income , education , occupation , pan , aadhar , seniourCitizen , existingacc , dummy;
+    JLabel l1 , l2 ,religion , category , income , education , occupation , pan , aadhar , seniourCitizen , existingacc , dummy;
 
     JTextField pan1 , aadhar1;
 
@@ -25,17 +25,30 @@ public class SignupTwo extends JFrame implements ActionListener {
         Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel label = new JLabel(i3);
-        label.setBounds(20, 0, 100, 100);
+        label.setBounds(100, 0, 100, 100);
         add(label);
 
-        JLabel formno = new JLabel("Application Form Number : " + SignupOne.random);
+        JLabel formno = new JLabel("Welcome to JBank");
         formno.setFont(new Font("Raleway",Font.BOLD,38));
-        formno.setBounds(140, 29, 600, 40);
+        formno.setBounds(290, 29, 600, 40);
         add(formno);
+
+        l1 = new JLabel("Form No:");
+        l1.setFont(new Font("Raleway", Font.BOLD, 14));
+
+        l2 = new JLabel(SignupOne.random);
+        l2.setFont(new Font("Raleway", Font.BOLD, 14));
+
+        l1.setBounds(700, 10, 70, 30);
+        add(l1);
+
+        l2.setBounds(770, 10, 40, 30);
+        add(l2);
+
 
         JLabel Details = new JLabel("Page 02 : Personal Details");
         Details.setFont(new Font("Raleway",Font.BOLD,18));
-        Details.setBounds(300, 89, 400, 40);
+        Details.setBounds(340, 89, 400, 40);
         add(Details);
 
         religion = new JLabel("Religion : ");

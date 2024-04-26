@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class SignupOne extends JFrame implements ActionListener {
 
-    JLabel name ,fathername, dateofbirth, gender,email,maritalstatus,address,city,pincode,state;
+    JLabel l1 , l2 ,name ,fathername, dateofbirth, gender,email,maritalstatus,address,city,pincode,state;
     JTextField name1 ,fathername1,email1,address1,city1,pincode1,state1;
     JDateChooser dateofbirth1;
     JRadioButton male,female, other, yes, no;
@@ -27,18 +27,30 @@ public class SignupOne extends JFrame implements ActionListener {
         Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel label = new JLabel(i3);
-        label.setBounds(20, 0, 100, 100);
+        label.setBounds(100, 0, 100, 100);
         add(label);
 
-        JLabel formno = new JLabel("Application Form Number : " + random);
+        JLabel formno = new JLabel("Welcome to JBank");
         formno.setFont(new Font("Raleway",Font.BOLD,38));
-        formno.setBounds(140, 29, 600, 40);
+        formno.setBounds(290, 29, 600, 40);
         add(formno);
+
+        l1 = new JLabel("Form No:");
+        l1.setFont(new Font("Raleway", Font.BOLD, 14));
+
+        l2 = new JLabel(SignupOne.random);
+        l2.setFont(new Font("Raleway", Font.BOLD, 14));
+
+        l1.setBounds(700, 10, 70, 30);
+        add(l1);
+
+        l2.setBounds(770, 10, 40, 30);
+        add(l2);
+
 
         JLabel personalDetails = new JLabel("Page 01 : Personal Details");
         personalDetails.setFont(new Font("Raleway",Font.BOLD,20));
-        personalDetails.setBounds(300, 89, 400, 40);
-        personalDetails.setForeground(Color.GRAY);
+        personalDetails.setBounds(340, 89, 400, 40);
         add(personalDetails);
 
         name = new JLabel("Name : ");
