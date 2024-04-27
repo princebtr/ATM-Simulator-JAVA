@@ -6,14 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class Signup3 extends JFrame implements ActionListener {
+public class SignupThree extends JFrame implements ActionListener {
 
     JLabel acctype, cardno, maskedcard, label1, label2, pin, label3, label4, label5, label6, label7;
     JRadioButton saving, fixeddep, current, reccuringdep;
     JButton submit, cancel;
     JCheckBox atm, intban, mobban, emailalerts, cheque, esatat, tnc;
 
-    public Signup3() {
+    public SignupThree() {
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/logo.jpg"));
         Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
@@ -210,7 +210,7 @@ public class Signup3 extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Signup3();
+        new SignupThree();
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -265,6 +265,8 @@ public class Signup3 extends JFrame implements ActionListener {
                     c1.s.executeUpdate(q1);
                     c1.s.executeUpdate(q2);
                     JOptionPane.showMessageDialog(null, "Card Number: " + cardno + "\n Pin:" + pin);
+                    setVisible(false);
+                    new Login().setVisible(true);
 
                 }
 

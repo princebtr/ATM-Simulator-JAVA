@@ -206,7 +206,7 @@ public class SignupTwo extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
 
-        if (e.getSource() == previous){
+        if (e.getSource() == previous) {
             setVisible(false);
             new SignupOne().setVisible(true);
             return;
@@ -246,6 +246,8 @@ public class SignupTwo extends JFrame implements ActionListener {
                 Connect c1 = new Connect();
                 String query = "insert into signup2 values('"+formno+"','"+religion+"','"+category+"','"+income+"','"+education+"','"+occupation+"','"+pan+"','"+aadhar+"','"+scitizen+"','"+eaccount+"')";
                 c1.s.executeUpdate(query);
+                setVisible(false);
+                new SignupThree().setVisible(true);
             }
 
 

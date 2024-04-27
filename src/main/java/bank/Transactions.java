@@ -78,7 +78,7 @@ public class Transactions extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()==deposit){
-
+            new Deposit(pin).setVisible(true);
         }else if(ae.getSource()==withdrawal){
 
         }else if(ae.getSource()==fastCash){
@@ -86,7 +86,6 @@ public class Transactions extends JFrame implements ActionListener{
         }else if(ae.getSource()==miniState){
 
         }else if(ae.getSource()==pinchange){
-            setVisible(false);
 
         }else if(ae.getSource()==balanceEnq){
 
