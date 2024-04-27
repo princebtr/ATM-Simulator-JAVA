@@ -1,9 +1,11 @@
 package bank;
 
+import javax.management.Query;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 public class Login extends JFrame implements ActionListener {
 
@@ -77,10 +79,25 @@ public class Login extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == login){
+            Connect con = new Connect();
+            String cardno = cardno1.getText();
+            String pin = pin1.getText();
+            String query = "SELECT * FROM login WHERE cardno = '" + cardno + "' AND pin = '" + pin + "'";
+            try{
+                ResultSet res = con.s.executeQuery(query);
+                if(res.next()){
+                    setVisible(false);
+                    new Transactions("").setVisible(true);
+                } else{
+                    JOptionPane.showMessageDialog(null, "Invalid Card Number or Pin");
+                }
+            } catch (Exception ea){
+                System.out.println(ea.getMessage());
+            }
 
         } else if (e.getSource() == signup) {
             SignupOne signupOne = new SignupOne();
-            setVisible(true);
+            signupOne.setVisible(true);
             setVisible(false);
         } else if (e.getSource() == clear) {
             cardno1.setText("");
